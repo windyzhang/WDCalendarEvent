@@ -8,13 +8,23 @@
 
 #import <Foundation/Foundation.h>
 
-typedef void (^VZTBlock)(void);
+typedef void (^WDBlock)(void);
+
+@protocol WDCalendarEventDelegate <NSObject>
+
+@optional
+
+- (void)getEventIdenfiter:(NSString *)idenfiter;
+
+@end
 
 @interface WDCalendarEventManager : NSObject
 
+@property (nonatomic, weak) id<WDCalendarEventDelegate> eventDelegate;
+
 + (instancetype)shareCalendarEvent;
 
-- (void)showCalendarPermissionTip:(VZTBlock)successBlock failingBlock:(VZTBlock)failureBlock;
+- (void)showCalendarPermissionTip:(WDBlock)successBlock failingBlock:(WDBlock)failureBlock;
 //写日历事件
 - (void)writeCalendarEventWithDataDic:(NSDictionary *)dataDic;
 //删除日历事件

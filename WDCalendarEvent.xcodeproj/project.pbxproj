@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1D0A6DAA2028000E008F244A /* WDAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D0A6DA92028000E008F244A /* WDAlertView.m */; };
 		1D73944220240E87003D6E45 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D73944120240E87003D6E45 /* AppDelegate.m */; };
 		1D73944820240E87003D6E45 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1D73944620240E87003D6E45 /* Main.storyboard */; };
 		1D73944A20240E87003D6E45 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1D73944920240E87003D6E45 /* Assets.xcassets */; };
@@ -19,6 +20,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1D0A6DA82028000E008F244A /* WDAlertView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WDAlertView.h; sourceTree = "<group>"; };
+		1D0A6DA92028000E008F244A /* WDAlertView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WDAlertView.m; sourceTree = "<group>"; };
 		1D73943D20240E87003D6E45 /* WDCalendarEvent.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WDCalendarEvent.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1D73944020240E87003D6E45 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		1D73944120240E87003D6E45 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -79,6 +82,8 @@
 				1D73946920245FE2003D6E45 /* WDCalendarEventDetailController.m */,
 				1D73946520244FBE003D6E45 /* WDCalendarEventManager.h */,
 				1D73946620244FBE003D6E45 /* WDCalendarEventManager.m */,
+				1D0A6DA82028000E008F244A /* WDAlertView.h */,
+				1D0A6DA92028000E008F244A /* WDAlertView.m */,
 				1D73944620240E87003D6E45 /* Main.storyboard */,
 				1D73944920240E87003D6E45 /* Assets.xcassets */,
 				1D73944B20240E87003D6E45 /* LaunchScreen.storyboard */,
@@ -161,6 +166,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1D0A6DAA2028000E008F244A /* WDAlertView.m in Sources */,
 				1D73945020240E87003D6E45 /* main.m in Sources */,
 				1D73945E202411B5003D6E45 /* WDMainViewController.m in Sources */,
 				1D73946A20245FE2003D6E45 /* WDCalendarEventDetailController.m in Sources */,

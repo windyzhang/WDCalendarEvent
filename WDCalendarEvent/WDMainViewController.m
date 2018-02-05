@@ -9,8 +9,7 @@
 #import "WDMainViewController.h"
 #import "WDAddCalendarEventController.h"
 #import "WDCalendarEventDetailController.h"
-
-typedef void (^VZTIntegerBlock)(NSInteger iVal);
+#import "WDAlertView.h"
 
 @interface WDMainViewController ()<UITableViewDelegate,UITableViewDataSource>
 
@@ -32,6 +31,9 @@ typedef void (^VZTIntegerBlock)(NSInteger iVal);
 - (UITableView *)tableView {
     if (!_tableView) {
         _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT) style:UITableViewStyleGrouped];
+        _tableView.estimatedRowHeight = 0;
+        _tableView.estimatedSectionHeaderHeight = 0;
+        _tableView.estimatedSectionFooterHeight = 0;
         _tableView.delegate = self;
         _tableView.dataSource = self;
     }
@@ -62,10 +64,10 @@ typedef void (^VZTIntegerBlock)(NSInteger iVal);
     return 50;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
-    return 30;
+    return 20;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
-    return 30;
+    return CGFLOAT_MIN;
 }
 
 - (UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -84,6 +86,7 @@ typedef void (^VZTIntegerBlock)(NSInteger iVal);
         }
     } else {
         cell.textLabel.text = @"获取事件";
+        cell.textLabel.textAlignment = NSTextAlignmentCenter;
     }
     return cell;
 }
@@ -100,12 +103,12 @@ typedef void (^VZTIntegerBlock)(NSInteger iVal);
             [[WDCalendarEventManager shareCalendarEvent] setCalendarTag:@"1"];
         } failingBlock:^{
             sender.on = NO;
-            [self showWithTitle:@"没有权限"
-                        message:@"您的日历权限没有打开，请在“设置-隐私-日历”打开!"
-              cancelButtonTitle:@"取消"
-              otherButtonTitles:@[ @"确定" ]
-               inViewController:self
-                       selectAt:^(NSInteger iVal) {
+            [WDAlertView showAlertView:@"没有权限"
+                               message:@"您的日历权限没有打开，请在“设置-隐私-日历”打开!"
+                          cancelButton:@"取消"
+                                   otherButtons:@[ @"确定" ]
+                               inViewController:self
+                                       selectAt:^(NSInteger iVal) {
                 if (iVal == 1) {
                     NSURL *url = [NSURL URLWithString:UIApplicationOpenSettingsURLString];
                     if ([[UIApplication sharedApplication] canOpenURL:url]) {
@@ -118,32 +121,17 @@ typedef void (^VZTIntegerBlock)(NSInteger iVal);
         [[WDCalendarEventManager shareCalendarEvent] setCalendarTag:@"0"];
     }
 }
-- (void)showWithTitle:(NSString *)title message:(NSString *)message cancelButtonTitle:(NSString *)cancel otherButtonTitles:(NSArray *)titles inViewController:(UIViewController *)viewController selectAt:(VZTIntegerBlock)block {
-    
-    UIAlertController *alert = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:UIAlertControllerStyleAlert];
-    if (cancel) {
-        [alert addAction:[UIAlertAction actionWithTitle:cancel style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
-            if (block) {
-                block(0);
-            }
-        }]];
-    }
-    
-    for (NSInteger i = 0; i < [titles count]; i++) {
-        [alert addAction:[UIAlertAction actionWithTitle:titles[i] style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
-            if (block) {
-                block(i + 1);
-            }
-        }]];
-    }
-    [viewController presentViewController:alert animated:YES completion:NULL];
-}
+
 
 - (void)addCalendarEvent {
     WDAddCalendarEventController *addEvent = [[WDAddCalendarEventController alloc] init];
     [self.navigationController pushViewController:addEvent animated:YES];
 }
 - (void)getCalenderEvent {
+    if ([[[WDCalendarEventManager shareCalendarEvent] getCalendarTag] integerValue] == 0) {
+        [WDAlertView alertViewInViewController:self message:@"请打开日历权限"];
+        return;
+    }
     NSArray *events = [[WDCalendarEventManager shareCalendarEvent] getCalendarEventData];
     WDCalendarEventDetailController *eventDetail = [[WDCalendarEventDetailController alloc] init];
     eventDetail.eventArray = events;

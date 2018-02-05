@@ -16,4 +16,6 @@
 
 #import "WDMacros.h"
 #import "WDCalendarEventManager.h"
-
+#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
+#import "WDAlertView.h"

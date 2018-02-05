@@ -27,7 +27,7 @@ NSString *const kCalendarTag = @"kCalendarTag";
     });
     return manage;
 }
-- (void)showCalendarPermissionTip:(VZTBlock)successBlock failingBlock:(VZTBlock)failureBlock {
+- (void)showCalendarPermissionTip:(WDBlock)successBlock failingBlock:(WDBlock)failureBlock {
     
     EKEventStoreRequestAccessCompletionHandler completion = ^(BOOL granted, NSError *error) {
         if (granted) {
@@ -40,6 +40,7 @@ NSString *const kCalendarTag = @"kCalendarTag";
             }
         }
     };
+    
     EKAuthorizationStatus status = [EKEventStore authorizationStatusForEntityType:EKEntityTypeEvent];
     switch (status) {
         case EKAuthorizationStatusNotDetermined: {
@@ -63,18 +64,23 @@ NSString *const kCalendarTag = @"kCalendarTag";
     
     EKEventStore *eventStore = [[EKEventStore alloc] init];
     EKEvent *event = [EKEvent eventWithEventStore:eventStore];
-    NSDate *startDate = [NSDate dateWithTimeIntervalSinceNow:100];
-    NSDate *endDate = [NSDate dateWithTimeIntervalSinceNow:300];
-    event.title = @"添加自定义日历事件";
+    
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    formatter.dateFormat = @"yyyy-MM-dd HH:mm";
+    NSDate *startDate = [formatter dateFromString:dataDic[@"startDate"]];
+    NSDate *endDate = [formatter dateFromString:dataDic[@"endDate"]];
+    event.title = dataDic[@"title"];
     event.startDate = startDate;
     event.endDate = endDate;
     event.allDay = NO;
+    
     NSTimeInterval alarmTime = -2 * 60;
     EKAlarm *alarm = [EKAlarm alarmWithAbsoluteDate:[NSDate dateWithTimeInterval:alarmTime sinceDate:endDate]];
     [event addAlarm:alarm];
     
     [event setCalendar:[eventStore defaultCalendarForNewEvents]];
     [eventStore saveEvent:event span:EKSpanThisEvent error:NULL];
+    [self.eventDelegate getEventIdenfiter:event.eventIdentifier];
 }
 - (void)deleteCalendarEventWithID:(NSString *)eventID {
     
