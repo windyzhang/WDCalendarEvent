@@ -1,0 +1,355 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 48;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1D73944220240E87003D6E45 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D73944120240E87003D6E45 /* AppDelegate.m */; };
+		1D73944820240E87003D6E45 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1D73944620240E87003D6E45 /* Main.storyboard */; };
+		1D73944A20240E87003D6E45 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1D73944920240E87003D6E45 /* Assets.xcassets */; };
+		1D73944D20240E87003D6E45 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1D73944B20240E87003D6E45 /* LaunchScreen.storyboard */; };
+		1D73945020240E87003D6E45 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D73944F20240E87003D6E45 /* main.m */; };
+		1D73945E202411B5003D6E45 /* WDMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D73945D202411B5003D6E45 /* WDMainViewController.m */; };
+		1D739464202417B3003D6E45 /* WDAddCalendarEventController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D739463202417B3003D6E45 /* WDAddCalendarEventController.m */; };
+		1D73946720244FBE003D6E45 /* WDCalendarEventManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D73946620244FBE003D6E45 /* WDCalendarEventManager.m */; };
+		1D73946A20245FE2003D6E45 /* WDCalendarEventDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D73946920245FE2003D6E45 /* WDCalendarEventDetailController.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		1D73943D20240E87003D6E45 /* WDCalendarEvent.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WDCalendarEvent.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1D73944020240E87003D6E45 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		1D73944120240E87003D6E45 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		1D73944720240E87003D6E45 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		1D73944920240E87003D6E45 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		1D73944C20240E87003D6E45 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		1D73944E20240E87003D6E45 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1D73944F20240E87003D6E45 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		1D73945C202411B5003D6E45 /* WDMainViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WDMainViewController.h; sourceTree = "<group>"; };
+		1D73945D202411B5003D6E45 /* WDMainViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WDMainViewController.m; sourceTree = "<group>"; };
+		1D73945F20241484003D6E45 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
+		1D7394612024172C003D6E45 /* WDMacros.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WDMacros.h; sourceTree = "<group>"; };
+		1D739462202417B3003D6E45 /* WDAddCalendarEventController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WDAddCalendarEventController.h; sourceTree = "<group>"; };
+		1D739463202417B3003D6E45 /* WDAddCalendarEventController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WDAddCalendarEventController.m; sourceTree = "<group>"; };
+		1D73946520244FBE003D6E45 /* WDCalendarEventManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WDCalendarEventManager.h; sourceTree = "<group>"; };
+		1D73946620244FBE003D6E45 /* WDCalendarEventManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WDCalendarEventManager.m; sourceTree = "<group>"; };
+		1D73946820245FE2003D6E45 /* WDCalendarEventDetailController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WDCalendarEventDetailController.h; sourceTree = "<group>"; };
+		1D73946920245FE2003D6E45 /* WDCalendarEventDetailController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WDCalendarEventDetailController.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		1D73943A20240E87003D6E45 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		1D73943420240E87003D6E45 = {
+			isa = PBXGroup;
+			children = (
+				1D73943F20240E87003D6E45 /* WDCalendarEvent */,
+				1D73943E20240E87003D6E45 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		1D73943E20240E87003D6E45 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				1D73943D20240E87003D6E45 /* WDCalendarEvent.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		1D73943F20240E87003D6E45 /* WDCalendarEvent */ = {
+			isa = PBXGroup;
+			children = (
+				1D73944020240E87003D6E45 /* AppDelegate.h */,
+				1D73944120240E87003D6E45 /* AppDelegate.m */,
+				1D73945C202411B5003D6E45 /* WDMainViewController.h */,
+				1D73945D202411B5003D6E45 /* WDMainViewController.m */,
+				1D739462202417B3003D6E45 /* WDAddCalendarEventController.h */,
+				1D739463202417B3003D6E45 /* WDAddCalendarEventController.m */,
+				1D73946820245FE2003D6E45 /* WDCalendarEventDetailController.h */,
+				1D73946920245FE2003D6E45 /* WDCalendarEventDetailController.m */,
+				1D73946520244FBE003D6E45 /* WDCalendarEventManager.h */,
+				1D73946620244FBE003D6E45 /* WDCalendarEventManager.m */,
+				1D73944620240E87003D6E45 /* Main.storyboard */,
+				1D73944920240E87003D6E45 /* Assets.xcassets */,
+				1D73944B20240E87003D6E45 /* LaunchScreen.storyboard */,
+				1D73944E20240E87003D6E45 /* Info.plist */,
+				1D73945F20241484003D6E45 /* PrefixHeader.pch */,
+				1D7394612024172C003D6E45 /* WDMacros.h */,
+				1D73944F20240E87003D6E45 /* main.m */,
+			);
+			path = WDCalendarEvent;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		1D73943C20240E87003D6E45 /* WDCalendarEvent */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1D73945320240E87003D6E45 /* Build configuration list for PBXNativeTarget "WDCalendarEvent" */;
+			buildPhases = (
+				1D73943920240E87003D6E45 /* Sources */,
+				1D73943A20240E87003D6E45 /* Frameworks */,
+				1D73943B20240E87003D6E45 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = WDCalendarEvent;
+			productName = WDCalendarEvent;
+			productReference = 1D73943D20240E87003D6E45 /* WDCalendarEvent.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		1D73943520240E87003D6E45 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0910;
+				ORGANIZATIONNAME = feeyo;
+				TargetAttributes = {
+					1D73943C20240E87003D6E45 = {
+						CreatedOnToolsVersion = 9.1;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 1D73943820240E87003D6E45 /* Build configuration list for PBXProject "WDCalendarEvent" */;
+			compatibilityVersion = "Xcode 8.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 1D73943420240E87003D6E45;
+			productRefGroup = 1D73943E20240E87003D6E45 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				1D73943C20240E87003D6E45 /* WDCalendarEvent */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		1D73943B20240E87003D6E45 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1D73944D20240E87003D6E45 /* LaunchScreen.storyboard in Resources */,
+				1D73944A20240E87003D6E45 /* Assets.xcassets in Resources */,
+				1D73944820240E87003D6E45 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		1D73943920240E87003D6E45 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1D73945020240E87003D6E45 /* main.m in Sources */,
+				1D73945E202411B5003D6E45 /* WDMainViewController.m in Sources */,
+				1D73946A20245FE2003D6E45 /* WDCalendarEventDetailController.m in Sources */,
+				1D73944220240E87003D6E45 /* AppDelegate.m in Sources */,
+				1D739464202417B3003D6E45 /* WDAddCalendarEventController.m in Sources */,
+				1D73946720244FBE003D6E45 /* WDCalendarEventManager.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		1D73944620240E87003D6E45 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1D73944720240E87003D6E45 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		1D73944B20240E87003D6E45 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1D73944C20240E87003D6E45 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		1D73945120240E87003D6E45 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		1D73945220240E87003D6E45 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		1D73945420240E87003D6E45 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = C78VJKGV2J;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/WDCalendarEvent/PrefixHeader.pch";
+				INFOPLIST_FILE = WDCalendarEvent/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.feeyo.WDCalendarEvent;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		1D73945520240E87003D6E45 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = C78VJKGV2J;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/WDCalendarEvent/PrefixHeader.pch";
+				INFOPLIST_FILE = WDCalendarEvent/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.feeyo.WDCalendarEvent;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1D73943820240E87003D6E45 /* Build configuration list for PBXProject "WDCalendarEvent" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1D73945120240E87003D6E45 /* Debug */,
+				1D73945220240E87003D6E45 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1D73945320240E87003D6E45 /* Build configuration list for PBXNativeTarget "WDCalendarEvent" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1D73945420240E87003D6E45 /* Debug */,
+				1D73945520240E87003D6E45 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 1D73943520240E87003D6E45 /* Project object */;
+}
