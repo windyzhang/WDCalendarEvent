@@ -3,7 +3,7 @@
 //  WDCalendarEvent
 //
 //  Created by WindyZhang on 2018/2/2.
-//  Copyright © 2018年 feeyo. All rights reserved.
+//  Copyright © 2018年 WindyZhang. All rights reserved.
 //
 
 #import "WDCalendarEventManager.h"
@@ -70,6 +70,7 @@ NSString *const kCalendarTag = @"kCalendarTag";
     NSDate *startDate = [formatter dateFromString:dataDic[@"startDate"]];
     NSDate *endDate = [formatter dateFromString:dataDic[@"endDate"]];
     event.title = dataDic[@"title"];
+    event.notes = dataDic[@"notes"];
     event.startDate = startDate;
     event.endDate = endDate;
     event.allDay = NO;
@@ -80,7 +81,7 @@ NSString *const kCalendarTag = @"kCalendarTag";
     
     [event setCalendar:[eventStore defaultCalendarForNewEvents]];
     [eventStore saveEvent:event span:EKSpanThisEvent error:NULL];
-    [self.eventDelegate getEventIdenfiter:event.eventIdentifier];
+    [self.eventDelegate getEventIdenfiterFromAddSuccess:event.eventIdentifier];
 }
 - (void)deleteCalendarEventWithID:(NSString *)eventID {
     

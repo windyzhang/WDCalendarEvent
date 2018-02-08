@@ -3,7 +3,7 @@
 //  WDCalendarEvent
 //
 //  Created by WindyZhang on 2018/2/2.
-//  Copyright © 2018年 feeyo. All rights reserved.
+//  Copyright © 2018年 WindyZhang. All rights reserved.
 //
 
 #import "WDAddCalendarEventController.h"
@@ -14,11 +14,14 @@ typedef NS_ENUM(NSInteger,WDPickerStatus) {
     WDPickerStatusEndDate
 };
 
+NSString *const kAddEventTableViewCellID = @"kAddEventTableViewCellID";
+
 @interface WDAddCalendarEventController ()<UITableViewDelegate,UITableViewDataSource,WDCalendarEventDelegate>
 
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) UIDatePicker *datePicker;
 @property (nonatomic, strong) UITextField *titleTextField;
+@property (nonatomic, strong) UITextField *memoTextField;
 @property (nonatomic, assign) WDPickerStatus pickerStatus;
 @property (nonatomic, strong) UILabel *startLabel;
 @property (nonatomic, strong) UILabel *endLabel;
@@ -59,10 +62,17 @@ typedef NS_ENUM(NSInteger,WDPickerStatus) {
     }
     return _titleTextField;
 }
+- (UITextField *)memoTextField {
+    if (!_memoTextField) {
+        _memoTextField = [[UITextField alloc] initWithFrame:CGRectMake(15, 5, SCREEN_WIDTH - 30, 40)];
+        _memoTextField.placeholder = @"备忘";
+    }
+    return _memoTextField;
+}
 - (UILabel *)startLabel {
     if (!_startLabel) {
         _startLabel = [[UILabel alloc] initWithFrame:CGRectMake(SCREEN_WIDTH - 215, 0, 200, 50)];
-        _startLabel.text = @"2018-02-05 15:31";
+//        _startLabel.text = @"2018-02-05 15:31";
         _startLabel.textAlignment = NSTextAlignmentRight;
         _startLabel.textColor = [UIColor grayColor];
     }
@@ -71,7 +81,7 @@ typedef NS_ENUM(NSInteger,WDPickerStatus) {
 - (UILabel *)endLabel {
     if (!_endLabel) {
         _endLabel = [[UILabel alloc] initWithFrame:CGRectMake(SCREEN_WIDTH - 215, 0, 200, 50)];
-        _endLabel.text = @"2018-02-05 17:20";
+//        _endLabel.text = @"2018-02-05 17:20";
         _endLabel.textAlignment = NSTextAlignmentRight;
         _endLabel.textColor = [UIColor grayColor];
     }
@@ -81,16 +91,27 @@ typedef NS_ENUM(NSInteger,WDPickerStatus) {
     return 3;
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    if (section == 1) {
-        return 3;
+    NSInteger numberOfRow;
+    if (section == 0) {
+        numberOfRow = 1;
+    } else if (section == 1) {
+        numberOfRow = 3;
+        if (self.pickerStatus == WDPickerStatusEndDate || self.pickerStatus == WDPickerStatusStartDate) {
+            numberOfRow ++;
+        }
+    } else {
+        numberOfRow = 1;
     }
-    return 1;
+    return numberOfRow;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    if (indexPath.section == 1 && indexPath.row == 2) {
-        return 200;
+    CGFloat height = 50;
+    if (self.pickerStatus == WDPickerStatusStartDate && (indexPath.section == 1 && indexPath.row == 1)) {
+        height = 200;
+    } else if (self.pickerStatus == WDPickerStatusEndDate && (indexPath.section == 1 && indexPath.row == 2)) {
+        height = 200;
     }
-    return 50;
+    return height;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
     return 20;
@@ -100,34 +121,77 @@ typedef NS_ENUM(NSInteger,WDPickerStatus) {
 }
 
 - (UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"tableViewCellID"];
+    
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kAddEventTableViewCellID];
     if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"tableViewCellID"];
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:kAddEventTableViewCellID];
     }
     if (indexPath.section == 0) {
         [cell.contentView addSubview:self.titleTextField];
     } else if (indexPath.section == 1) {
-        if (indexPath.row == 0) {
+        NSArray *array;
+        if (self.pickerStatus == WDPickerStatusNone) {
+            array = @[@"开始时间",@"结束时间",@"备忘"];
+        } else if(self.pickerStatus == WDPickerStatusStartDate) {
+            array = @[@"开始时间",@"picker",@"结束时间",@"备忘"];
+        } else {
+            array = @[@"开始时间",@"结束时间",@"picker",@"备忘"];
+        }
+        NSString *title = [array objectAtIndex:indexPath.row];
+        if ([title isEqualToString:@"开始时间"]) {
             cell.textLabel.text = @"开始时间";
             [cell.contentView addSubview:self.startLabel];
-        } else if (indexPath.row == 1) {
+        } else if([title isEqualToString:@"结束时间"]) {
             cell.textLabel.text = @"结束时间";
             [cell.contentView addSubview:self.endLabel];
+        } else if([title isEqualToString:@"备忘"]) {
+            [cell.contentView addSubview:self.memoTextField];
         } else {
             [cell.contentView addSubview:self.datePicker];
         }
     } else {
         cell.textLabel.text = @"写入事件";
+        cell.textLabel.textColor = [UIColor redColor];
         cell.textLabel.textAlignment = NSTextAlignmentCenter;
     }
     return cell;
 }
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    if (indexPath.section == 1 && indexPath.row == 0) {
-       
-    }
-    if (indexPath.section == 2) {
+    if (indexPath.section == 1) {
+        if (indexPath.row == 0) {
+            if (self.pickerStatus == WDPickerStatusNone) {
+                self.pickerStatus = WDPickerStatusStartDate;
+                NSIndexPath *indexPathForInsert = [NSIndexPath indexPathForRow:(indexPath.row + 1) inSection:indexPath.section];
+                NSArray *arr = [NSArray arrayWithObject:indexPathForInsert];
+                [tableView insertRowsAtIndexPaths:arr withRowAnimation:UITableViewRowAnimationAutomatic];
+            } else if (self.pickerStatus == WDPickerStatusStartDate) {
+                self.pickerStatus = WDPickerStatusNone;
+                NSIndexPath *indexPathForInsert = [NSIndexPath indexPathForRow:(indexPath.row + 1) inSection:indexPath.section];
+                NSArray *arr = [NSArray arrayWithObject:indexPathForInsert];
+                [tableView deleteRowsAtIndexPaths:arr withRowAnimation:UITableViewRowAnimationAutomatic];
+            } else {
+                self.pickerStatus = WDPickerStatusStartDate;
+                NSIndexPath *indexPathFrom = [NSIndexPath indexPathForRow:(indexPath.row + 2) inSection:indexPath.section];
+                NSIndexPath *indexPathTo = [NSIndexPath indexPathForRow:(indexPath.row + 1) inSection:indexPath.section];
+                [tableView moveRowAtIndexPath:indexPathFrom toIndexPath:indexPathTo];
+            }
+        } else if (indexPath.row == 1 && self.pickerStatus == WDPickerStatusNone) {
+            self.pickerStatus = WDPickerStatusEndDate;
+            NSIndexPath *indexPathForInsert = [NSIndexPath indexPathForRow:(indexPath.row + 1) inSection:indexPath.section];
+            [tableView insertRowsAtIndexPaths:@[indexPathForInsert] withRowAnimation:UITableViewRowAnimationAutomatic];
+        } else if (indexPath.row == 1 && self.pickerStatus == WDPickerStatusEndDate) {
+            self.pickerStatus = WDPickerStatusNone;
+            NSIndexPath *indexPathForDelete = [NSIndexPath indexPathForRow:(indexPath.row + 1) inSection:indexPath.section];
+            [tableView deleteRowsAtIndexPaths:@[indexPathForDelete] withRowAnimation:UITableViewRowAnimationAutomatic];
+        } else if (indexPath.row == 2 && self.pickerStatus == WDPickerStatusStartDate) {
+            self.pickerStatus = WDPickerStatusEndDate;
+            NSIndexPath *indexPathFrom = [NSIndexPath indexPathForRow:(indexPath.row - 1) inSection:indexPath.section];
+            NSIndexPath *indexPathTo = [NSIndexPath indexPathForRow:indexPath.row inSection:indexPath.section];
+            [tableView moveRowAtIndexPath:indexPathFrom toIndexPath:indexPathTo];
+        }
+    } else if (indexPath.section == 2) {
         [self writeCalendarEvent];
     }
 }
@@ -147,11 +211,11 @@ typedef NS_ENUM(NSInteger,WDPickerStatus) {
         [WDAlertView alertViewInViewController:self message:@"请输入标题"];
         return;
     }
-    NSDictionary *paramDic = [NSDictionary dictionaryWithObjectsAndKeys:self.startLabel.text,@"startDate",self.endLabel.text,@"endDate",self.titleTextField.text,@"title", nil];
+    NSDictionary *paramDic = [NSDictionary dictionaryWithObjectsAndKeys:self.startLabel.text,@"startDate",self.endLabel.text,@"endDate",self.titleTextField.text,@"title",self.memoTextField.text,@"notes", nil];
     [WDCalendarEventManager shareCalendarEvent].eventDelegate = self;
     [[WDCalendarEventManager shareCalendarEvent] writeCalendarEventWithDataDic:paramDic];
 }
-- (void)getEventIdenfiter:(NSString *)idenfiter {
+- (void)getEventIdenfiterFromAddSuccess:(NSString *)idenfiter {
     [WDAlertView alertViewInViewController:self message:@"写入日历事件成功"];
 }
 - (void)didReceiveMemoryWarning {

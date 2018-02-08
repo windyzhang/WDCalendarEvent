@@ -3,7 +3,7 @@
 //  WDCalendarEvent
 //
 //  Created by WindyZhang on 2018/2/2.
-//  Copyright © 2018年 feeyo. All rights reserved.
+//  Copyright © 2018年 WindyZhang. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
@@ -14,7 +14,7 @@ typedef void (^WDBlock)(void);
 
 @optional
 
-- (void)getEventIdenfiter:(NSString *)idenfiter;
+- (void)getEventIdenfiterFromAddSuccess:(NSString *)idenfiter;
 
 @end
 
